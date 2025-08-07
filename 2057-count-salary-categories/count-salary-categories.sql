@@ -1,0 +1,14 @@
+# Write your MySQL query statement below
+#sqljourey-MV
+SELECT 'Low Salary' AS category,
+        COUNT(IF(income < 20000, 1, NULL)) AS accounts_count
+FROM Accounts
+UNION ALL
+SELECT 'Average Salary',
+        COUNT(IF(income >= 20000 AND income <= 50000, 1, NULL))
+FROM Accounts     
+UNION ALL
+SELECT 'High Salary',
+        COUNT(IF(income > 50000, 1, NULL))
+FROM Accounts
+order by accounts_count desc
