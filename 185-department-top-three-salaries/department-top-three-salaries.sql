@@ -8,7 +8,6 @@ FROM (
         e.salary AS Salary,
         DENSE_RANK() OVER (PARTITION BY d.name ORDER BY Salary DESC) AS rank_1
     FROM Employee e
-    JOIN Department d
-    ON e.departmentId = d.id
+    JOIN Department d ON e.departmentId = d.id
 ) AS rank_table
-WHERE rank_1 <= 3;
+WHERE rank_1 <= 3
