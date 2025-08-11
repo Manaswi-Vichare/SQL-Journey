@@ -1,11 +1,11 @@
 # Write your MySQL query statement below
 #sqljourney-MV
-select distinct visited_on,
-        sum(amount) over w as amount,
-        round((sum(amount) over w)/7, 2) as average_amount
-    from customer
+SELECT DISTINCT visited_on,
+        SUM(amount) OVER w AS amount,
+        ROUND((SUM(amount) OVER w)/7, 2) AS average_amount
+    FROM customer
     WINDOW w AS ( 
-            order by visited_on
-            range between interval 6 day PRECEDING and current row
+            ORDER BY visited_on
+            RANGE BETWEEN INTERVAL 6 DAY PRECEDING AND current ROW
     )
-    Limit 6, 999
+    LIMIT 6, 999
