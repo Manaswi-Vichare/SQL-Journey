@@ -1,6 +1,10 @@
 # Write your MySQL query statement below
-#sqljourney-MV
+#sqljourney-mv
 SELECT x, y, z,
-    IF(x+y > z AND y+z >x AND z+x > y, "Yes", "No")
-    as triangle
+    CASE 
+        WHEN x + y > z AND y + z > x AND  z + x > y THEN 'Yes'
+        ELSE 'No'
+    END AS triangle
 FROM Triangle
+
+
