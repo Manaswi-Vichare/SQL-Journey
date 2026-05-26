@@ -1,4 +1,3 @@
 # Write your MySQL query statement below
-#sqljourney-MV
-DELETE P2 FROM Person P1, Person P2
-WHERE P1.email = P2.email AND P1.id < P2.id
+DELETE p1 FROM Person p1, Person p2
+WHERE p1.email = p2.email && p1.id > p2.id
