@@ -1,5 +1,4 @@
 # Write your MySQL query statement below
-#sqljourney-MV
-SELECT W1.id
-FROM Weather as W1, Weather as W2
-WHERE datediff(W1.recordDate, W2.recordDate) = 1 and W1.temperature > W2.temperature
+#sqljourney-mv
+SELECT e2.id as Id FROM Weather e1, Weather e2
+WHERE DATEDIFF(e2.recordDate, e1.recordDate) = 1 AND e2.temperature > e1.temperature 
