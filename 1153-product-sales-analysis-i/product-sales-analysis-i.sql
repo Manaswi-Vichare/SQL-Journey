@@ -1,4 +1,5 @@
 # Write your MySQL query statement below
-#sqljourney-MV
-SELECT Product.product_name, Sales.`year`, Sales.price FROM Sales
-JOIN Product ON Sales.product_id = Product.product_id
+#sqljourney-mv
+SELECT p.product_name, s.year, s.price FROM Sales s
+JOIN Product p
+ON p.product_id = s.product_id
