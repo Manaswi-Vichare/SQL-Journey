@@ -1,10 +1,14 @@
 # Write your MySQL query statement below
-#sqljourney-MV
-SELECT
-CASE WHEN id%2 = 0 THEN id - 1
-     WHEN id%2 != 0 AND id = (SELECT MAX(id) FROM Seat) THEN id
-     WHEN id%2 != 0 THEN id + 1  
-     END AS id, 
-     student 
-FROM Seat
+#sqljourney-mv
+SELECT 
+    CASE 
+    WHEN id % 2 = 1 AND id + 1 IN (
+        SELECT ID FROM Seat
+    ) THEN id + 1 
+    
+    WHEN id % 2 = 0 THEN id - 1 
+    
+    ELSE id
+    END
+AS id, student FROM Seat
 ORDER BY id
