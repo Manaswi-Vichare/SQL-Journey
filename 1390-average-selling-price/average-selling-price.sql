@@ -1,14 +1,12 @@
 # Write your MySQL query statement below
-#sqljourney-MV
-SELECT 
-    p.product_id,
-    IFNULL(
-    ROUND(
-    SUM(IF(u.purchase_date BETWEEN p.start_date AND p.end_date, u.units * p.price, 0)) 
-    / 
-    SUM(IF(u.purchase_date BETWEEN p.start_date AND p.end_date, u.units, 0))
-    , 2), 0)
-    as average_price 
-FROM Prices p
-LEFT JOIN UnitsSold u ON p.product_id = u.product_id
-GROUP BY p.product_id
+#sqljourney-mv
+SELECT P.product_id, 
+       IFNULL(
+       ROUND
+       (SUM(IF(purchase_date BETWEEN start_date AND end_date, P.price * U.units, 0))
+       / SUM(IF(purchase_date BETWEEN start_date AND end_date, U.units, 0))
+       , 2), 0) AS average_price
+FROM Prices P
+LEFT JOIN UnitsSold U
+ON P.product_id = U.product_id
+GROUP BY P.product_id
