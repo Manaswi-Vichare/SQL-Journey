@@ -1,16 +1,17 @@
 # Write your MySQL query statement below
-#sqljourney-MV
-SELECT 
-    s.user_id,
-    ROUND(
-        COALESCE(
-        SUM(IF(
-        (c.action = 'confirmed'), 1, 0))
-        / 
-        COUNT(c.action)
-        , 0)
-    , 2)
-    as confirmation_rate
+#sqljourney-mv
+SELECT s.user_id,
+        IFNULL(ROUND(SUM(
+            CASE
+                WHEN c.action = 'confirmed' THEN 1 
+                ELSE 0
+                END
+                ) / COUNT(c.action), 2), 0) AS confirmation_rate
 FROM Signups s
-LEFT JOIN Confirmations c ON s.user_id = c.user_id
-GROUP BY s.user_id
+LEFT JOIN Confirmations c ON c.user_id = s.user_id
+GROUP BY s.user_id 
+
+
+
+
+
