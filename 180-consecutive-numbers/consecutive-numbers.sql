@@ -1,6 +1,7 @@
 # Write your MySQL query statement below
-#sqljourney-MV
-SELECT DISTINCT L1.num AS ConsecutiveNums 
-FROM Logs L1 JOIN Logs L2 JOIN Logs L3
-ON L1.num = L2.num AND L2.num = L3.num
-   AND L1.id = L2.id - 1 AND L2.id = L3.id - 1
+SELECT DISTINCT l1.num AS ConsecutiveNums
+FROM Logs l1 JOIN Logs l2 JOIN Logs l3
+ON l1.num = l2.num AND 
+   l2.num = l3.num AND 
+   l1.id = l2.id - 1 AND 
+   l2.id = l3.id - 1
