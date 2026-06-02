@@ -6,6 +6,7 @@ class Solution:
         s1 = set(word1)
         s2 = set(word2)
         if s1 != s2:
+            
             return False
 
         c1 = {}
